@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 10px;
+            font-size: 15px;
+            
+        }
+        fieldset{
+            margin: 30px;
+            flex-direction: column-reverse;
+        }
+        h1{
+            font-size: 30px;
+            background-image: url(/images/rx.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        ul {
+        list-style-type: none;
+        }
+        .form1{
+            display: flex;
+            justify-content: space-between ;
+            padding: 5px;
+        }
+        .form2{
+            margin: 15px;
+        }
+        .form4{
+            display: flex;
+            flex-direction: row;
+        }
+        .form5{
+            display: flex;
+            justify-content: space-between ;
+        }
+        .btn{
+            display:flex;
+            justify-content: flex-end;
+            height: 60px;
+
+        }
+        
+        
+    </style>
+</head>
+<body>
+    
+    <h1>Request form for Doctor's appointment</h1>
+    <p>Patient, ____________</p>
+   
+    <br>
+<fieldset>
+    <form action="/submission.html" name="logform" method="get" 
+    onsubmit="return validateForm()">
+    <div class="form1">
+            <label for="text" value="firstName" id="firstName">First Nane</label><br>
+            <input type="text" name="firstName" id="firstName" required="required" size="25" pattern="[^\d]+">
+            <label for="text" value="middleName" >Middle Name</label>
+            <input type="text" name="middleName" placeholder="Optional" id="middleName" size="25">
+            <label for="text">Last Name</label><br>
+            <input type="text" name="lastName" required="required" size="25" pattern="[^\d]+">
+    </div>
+    <div class="form2">
+            <label for="text">Address</label>
+            <input type="text" name="address" required="required" size="100">
+       </div>
+       <div class="form3">
+        <label for="birtdate">Enter your Birthday</label>
+        <input id="Id" type='date' min='1899-01-01' max='2021-11-12'></input>
+        <label for="number">Contact Number</label>
+        <input type="text" name="number" id="contactNumber">
+        <label for="gender">Gender: </label>
+            <input type="radio" name="gender" value="male">Male</input>
+            <input type="radio" name="gender" value=female>Female</input><br>
+       </div>
+       <hr>
+       <div class="form4">
+        <label for="skills ">Medical History:</label><br>
+            <div class="radio">
+                <input type="checkbox" name="Asthma"  >Asthma</input>
+                <input type="checkbox" name="Cancer">Cancer</input>
+                <input type="checkbox" name="Cardiac Disease">Cardiac Disease</input>
+                <input type="checkbox" name="diabetes">Diabetes</input>
+                <input type="checkbox" name="Hypertension">Hypertension</input>
+                <input type="checkbox" name="Psyc">Psychiatric Disorder</input>
+                <input type="checkbox" name="Epilepsy"  >Epilepsy</input>
+                <input type="checkbox" name="Others" >Others</input>
+            </div>
+       </div>
+       <hr>
+       
+       <div class="form5">
+        <label for="text">Current Symptoms:</label><br>
+        <select name="" id="mselect" multiple>
+            <option value="Chest">Chest Pain</option>
+            <option value="Respiratory">Respiratory</option>
+            <option value="Hematological">Hematological</option>
+            <option value="Lymphatic">Lymphatic</option>
+            <option value="Neuro">Neurological</option>
+        </select>
+            <label for="text">Are you currently taking medication?</label><br><br>
+        <div class="container1">
+            <ul>
+            <li><input id="medi1" type="radio" name="medication" value="yes" required="required"> Yes</input></li>
+            <li><input id="medi2" type="radio" name="medication" value="no"required="required" > No</input></li>
+            <li> <input type="text" size="30" placeholder="If yes please indicate here"></li>
+        </ul>
+        </div>
+       </div>
+       <div class="btn">
+        <button type="submit" onclick="validateForm()">Submit</button>
+        <input type="reset" value="Clear All">
+        </div>
+</fieldset>
+
+</form>
+
+        <script>
+        function validateForm(){
+        var contact = document.getElementById("contactNumber").value;
+        if(!/^(09|639)\d{9}$/.test(contact)) {
+            alert("Please enter phone number. Starts (09 or 639) plus (9) digit number");
+            return false;
+        }
+        else {
+            return true;
+        }
+
+        var contact = document.getElementById("firstName").value;
+            if (typeof firstname !== "string" ||
+                     /[0-9]+/g.test(firstname)
+                 ) {
+                     return false; 
+                 }
+                 alert("Form Submitted")
+                 return true;
+    }
+
+         document.getElementById("medi2").onchange = function () {
+         document.getElementById("medi2").setAttribute("disabled", "disabled");
+         if (this.value == '')
+           document.getElementById("medi2").removeAttribute("disabled");
+            };
+    
+        </script>
+</body>
+</html>

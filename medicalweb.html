@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="medical.css">
+    <title>Document</title>
+</head>
+<body>
+    <nav class="sticky">
+        <h1 class="logo">+AMedical</h1>
+             <ul class="nav-links">
+                 <li><a href="#">Home</a></li>
+                 <li><a href="#">Medical Assistant</a></li>
+                 <li><a href="#">About Us</a></li>
+                 <li><a href="#">Contact</a></li>
+                 <input class="bar" type="text" placeholder="Search.." name="search" >
+             </ul>            
+     </nav>
+     <div class="form1">
+     <h2>Please log-in</h2>
+    <p>Welcome to +AMedical</p>
+    <form action="sign-upform.html" name="logform" method="get" onsubmit="return validateForm()"> 
+    <input class="user" type="text" name="username" placeholder="Username"id="username"  ><br><br>
+    <input class="pass" type="password" name="password" placeholder="Password" id="password" required="required"><br><br>
+    <button class="btn" onclick="validateForm()">Log in</button><br><br>
+</div>
+<!-- JAVASCRIPT -->
+<script>
+    function validateForm(){
+        let logForm = document.forms["logform"];
+        let userName=logForm.username.value.replaceAll(" ", "");
+        let password=logForm.password.value.replaceAll(" ", "");
+
+        console.log(userName)
+
+        if (userName == ""){ // empty or null
+                    alert('Please provide username');
+                    logForm['username'].focus();//focus the cursor in username
+                    return false;//return to the page
+        }
+
+        if(userName.length<6){
+                    alert("Username must be at least of 6 characters.");   
+                    logForm['username'].focus();
+                    return false;
+      }
+      if (password.length < 8){
+                    alert("Password is too short");
+                    logForm['password'].focus();
+                    return false;
+                }
+        if (confirmPassword==""){
+                    alert("Confirm your Password");
+                    logForm['confirmpassword'].focus();
+                    return false;
+        }
+
+    }
+</script>
+</body>
+</html>
